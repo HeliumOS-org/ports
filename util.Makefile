@@ -4,9 +4,6 @@ WORKDIR = ./$(NAME)/workdir
 workdir: clean
 	mkdir $(WORKDIR)
 
-workdir_name:
-	@echo $(WORKDIR)
-
 extension-release: workdir
 	mkdir -p \
 		$(WORKDIR)/$(NAME)/usr/lib/extension-release.d/
