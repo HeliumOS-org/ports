@@ -1,7 +1,8 @@
 NAME = vscode
+TREE_PATH = editors/
 
 ROOT = workdir/$(NAME)/
-UTIL = $(MAKE) -C .. -f util.Makefile NAME=$(NAME)
+UTIL = $(MAKE) -C ../.. -f util.Makefile NAME=$(NAME) TREE_PATH=$(TREE_PATH)
 
 raw: clean
 	$(UTIL) extension-release

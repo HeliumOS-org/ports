@@ -1,5 +1,5 @@
 NAME = placeholder
-WORKDIR = ./$(NAME)/workdir
+WORKDIR = ./$(TREE_PATH)/$(NAME)/workdir
 
 workdir: clean
 	mkdir $(WORKDIR)

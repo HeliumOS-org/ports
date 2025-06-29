@@ -1,6 +1,6 @@
 PORTS = \
 	hello \
-	vscode
+	editors/vscode
 
 PORTS_ = \
     $(foreach port,$(PORTS),$(MAKE) -C $(port) "$@";)
