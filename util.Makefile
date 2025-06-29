@@ -14,6 +14,7 @@ raw:
 	mksquashfs $(WORKDIR)/$(NAME) $(WORKDIR)/$(NAME).raw
 
 install:
+	mkdir -p /var/lib/extensions/
 	cp $(WORKDIR)/$(NAME).raw /var/lib/extensions/
 
 clean:
