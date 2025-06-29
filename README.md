@@ -14,12 +14,12 @@ sudo git clone -b 10 https://github.com/HeliumOS-org/ports.git /var/ports
 
 Install port
 ```
-sudo make -C /var/ports/hello \
+sudo make -C /var/ports/misc/hello \
   install clean refresh
 ```
 
 Uninstall port
 ```
-sudo make -C /var/ports/hello \
+sudo make -C /var/ports/misc/hello \
   uninstall refresh
 ```

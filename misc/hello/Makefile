@@ -1,7 +1,8 @@
 NAME = hello
+TREE_PATH = misc/
 
 ROOT = workdir/$(NAME)/
-UTIL = $(MAKE) -C .. -f util.Makefile NAME=$(NAME)
+UTIL = $(MAKE) -C ../.. -f util.Makefile NAME=$(NAME) TREE_PATH=$(TREE_PATH)
 
 raw: clean
 	$(UTIL) extension-release
