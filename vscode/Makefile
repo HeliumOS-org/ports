@@ -18,22 +18,22 @@ raw: clean
 		/var/lib/
 	mv \
 	    workdir/VSCode-linux-x64 \
-		$(ROOT)/usr/lib/vscode
+		$(ROOT)/usr/local/lib/vscode
 
 	mkdir -p \
-		$(ROOT)/usr/bin/
+		$(ROOT)/usr/local/bin/
 	ln -s \
-		/usr/lib/vscode/bin/code \
-		$(ROOT)/usr/bin/
+		/usr/local/lib/vscode/bin/code \
+		$(ROOT)/usr/local/bin/
 	ln -s \
-		/usr/lib/vscode/bin/code-tunnel \
-		$(ROOT)/usr/bin/
+		/usr/local/lib/vscode/bin/code-tunnel \
+		$(ROOT)/usr/local/bin/
 
 	mkdir -p \
-		$(ROOT)/usr/share/applications/
+		$(ROOT)/usr/local/share/applications/
 	cp \
 		vscode.desktop \
-		$(ROOT)/usr/share/applications/
+		$(ROOT)/usr/local/share/applications/
 
 	$(UTIL) raw
 

@@ -6,9 +6,9 @@ workdir: clean
 
 extension-release: workdir
 	mkdir -p \
-		$(WORKDIR)/$(NAME)/usr/lib/extension-release.d/
+		$(WORKDIR)/$(NAME)/usr/local/lib/extension-release.d/
 	cp extension-release.in \
-		$(WORKDIR)/$(NAME)/usr/lib/extension-release.d/extension-release.$(NAME)
+		$(WORKDIR)/$(NAME)/usr/local/lib/extension-release.d/extension-release.$(NAME)
 
 raw:
 	mksquashfs $(WORKDIR)/$(NAME) $(WORKDIR)/$(NAME).raw

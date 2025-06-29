@@ -9,17 +9,17 @@ Ports in this ports tree will be binary if possible and built from source if nec
 Download ports tree
 
 ```shell
-sudo git clone -b 10 https://github.com/HeliumOS-org/ports.git /usr/local/ports
+sudo git clone -b 10 https://github.com/HeliumOS-org/ports.git /usr/ports
 ```
 
 Install port
 ```
-sudo make -C /usr/local/ports/hello \
+sudo make -C /usr/ports/hello \
   install clean refresh
 ```
 
 Uninstall port
 ```
-sudo make -C /usr/local/ports/hello \
+sudo make -C /usr/ports/hello \
   uninstall refresh
 ```

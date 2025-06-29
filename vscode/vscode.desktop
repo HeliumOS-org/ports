@@ -2,7 +2,7 @@
 Comment=Visual Studio Code
 Exec=code
 GenericName=Text Editor
-Icon=/usr/lib/vscode/resources/app/resources/linux/code.png
+Icon=/usr/local/lib/vscode/resources/app/resources/linux/code.png
 Name=VSCode
 NoDisplay=false
 Path=

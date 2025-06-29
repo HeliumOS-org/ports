@@ -7,9 +7,9 @@ raw: clean
 	$(UTIL) extension-release
 
 	mkdir -p \
-		$(ROOT)/usr/bin/
-	cp hello.in \
-		$(ROOT)/usr/bin/hello
+		$(ROOT)/usr/local/bin/
+	cp hello \
+		$(ROOT)/usr/local/bin/hello
 
 	$(UTIL) raw
 
