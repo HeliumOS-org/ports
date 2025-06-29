@@ -15,7 +15,7 @@ raw: clean
 		-C workdir
 
 	mkdir -p \
-		/var/lib/
+		$(ROOT)/usr/local/lib/
 	mv \
 	    workdir/VSCode-linux-x64 \
 		$(ROOT)/usr/local/lib/vscode
