@@ -43,3 +43,12 @@ Uninstall port
 sudo make -C /var/ports/misc/hello \
   uninstall refresh
 ```
+
+Update port
+```
+sudo git -C /var/ports \
+  pull
+sudo make -C /var/ports \
+  install clean refresh \
+  PORTS=editors/vscode
+```
