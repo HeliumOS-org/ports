@@ -1,0 +1,14 @@
+[Desktop Entry]
+Comment=Visual Studio Code
+Exec=code
+GenericName=Text Editor
+Icon=/usr/lib/vscode/resources/app/resources/linux/code.png
+Name=VSCode
+NoDisplay=false
+Path=
+StartupNotify=true
+Terminal=false
+TerminalOptions=
+Type=Application
+X-KDE-SubstituteUID=false
+X-KDE-Username=
