@@ -1,6 +1,7 @@
 PORTS = \
-	hello \
-	editors/vscode
+	editors/vscode \
+	misc/hello \
+	sysutils/tmux
 
 PORTS_ = \
     $(foreach port,$(PORTS),$(MAKE) -C $(port) "$@";)
@@ -22,3 +23,7 @@ refresh:
 
 status:
 	systemd-sysext status
+
+available:
+	@echo 'Available ports:'
+	@$(foreach port,$(PORTS),echo "    $(port)";)
