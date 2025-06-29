@@ -12,14 +12,34 @@ Download ports tree
 sudo git clone -b 10 https://github.com/HeliumOS-org/ports.git /var/ports
 ```
 
-Install port
+View available ports
+
+```shell
+sudo make -C /var/ports \
+  available
 ```
+
+Install port
+```shell
 sudo make -C /var/ports/misc/hello \
   install clean refresh
 ```
 
-Uninstall port
+Install multiple ports
 ```
+sudo make -C /var/ports \
+  install clean refresh \
+  PORTS='editors/vscode sysutils/tmux'
+```
+
+View installed ports
+```shell
+sudo make -C /var/ports \
+  status
+```
+
+Uninstall port
+```shell
 sudo make -C /var/ports/misc/hello \
   uninstall refresh
 ```
