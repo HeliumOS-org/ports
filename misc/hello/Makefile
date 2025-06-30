@@ -1,16 +1,25 @@
 NAME = hello
 TREE_PATH = misc/
 
-ROOT = workdir/$(NAME)/
+ROOT = $(dir $(realpath $(lastword $(MAKEFILE_LIST))))/workdir/$(NAME)/
 UTIL = $(MAKE) -C ../.. -f util.Makefile NAME=$(NAME) TREE_PATH=$(TREE_PATH)
+
+HELLO_VERSION = 2.9
 
 raw: clean
 	$(UTIL) extension-release
 
-	mkdir -p \
-		$(ROOT)/usr/local/bin/
-	cp hello \
-		$(ROOT)/usr/local/bin/hello
+	curl -L \
+		-o workdir/hello.tar.gz \
+		https://ftpmirror.gnu.org/gnu/hello/hello-$(HELLO_VERSION).tar.gz
+	cd workdir && tar -xzvf \
+		hello.tar.gz
+
+	cd workdir/hello-$(HELLO_VERSION) && \
+	    ./configure --prefix=/usr/local
+
+	make -C workdir/hello-$(HELLO_VERSION) \
+	    install DESTDIR=$(ROOT)
 
 	$(UTIL) raw
 
