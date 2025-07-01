@@ -4,6 +4,8 @@ A ports system based on systemd-sysext
 
 Ports in this ports tree will be binary if possible and built from source if necessary.
 
+**WARNING!** systemd-sysext may cause system instability. HeliumOS Ports is currently ***experimental***.
+
 ## Usage
 
 Download ports tree
