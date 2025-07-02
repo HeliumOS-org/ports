@@ -19,7 +19,7 @@ uninstall:
 	$(PORTS_)
 
 refresh:
-	systemd-sysext refresh
+	sudo systemctl restart systemd-sysext.service
 
 status:
 	systemd-sysext status
