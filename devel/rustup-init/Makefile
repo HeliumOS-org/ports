@@ -1,23 +1,22 @@
 NAME = rustup-init
 TREE_PATH = devel/
 
-ROOT = $(dir $(realpath $(lastword $(MAKEFILE_LIST))))/workdir/$(NAME)/
+PREFIX = $(dir $(realpath $(lastword $(MAKEFILE_LIST))))/workdir/$(NAME)/
 UTIL = $(MAKE) -C ../.. -f util.Makefile NAME=$(NAME) TREE_PATH=$(TREE_PATH)
 
-raw: clean
-	$(UTIL) extension-release
+build: clean
+	mkdir -p \
+    	$(PREFIX)
 
 	mkdir -p \
-		$(ROOT)/usr/local/bin/
+		$(PREFIX)/bin/
 	curl -L \
-		-o $(ROOT)/usr/local/bin/rustup-init \
+		-o $(PREFIX)/bin/rustup-init \
 		https://sh.rustup.rs
 	chmod +x \
-		$(ROOT)/usr/local/bin/rustup-init
+		$(PREFIX)/bin/rustup-init
 
-	$(UTIL) raw
-
-install: raw
+install: build
 	$(UTIL) install
 
 clean:

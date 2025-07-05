@@ -1,13 +1,14 @@
 NAME = hello
 TREE_PATH = misc/
 
-ROOT = $(dir $(realpath $(lastword $(MAKEFILE_LIST))))/workdir/$(NAME)/
+PREFIX = $(dir $(realpath $(lastword $(MAKEFILE_LIST))))/workdir/$(NAME)/
 UTIL = $(MAKE) -C ../.. -f util.Makefile NAME=$(NAME) TREE_PATH=$(TREE_PATH)
 
 HELLO_VERSION = 2.9
 
-raw: clean
-	$(UTIL) extension-release
+build: clean
+	mkdir -p \
+    	$(PREFIX)
 
 	curl -L \
 		-o workdir/hello.tar.gz \
@@ -19,11 +20,14 @@ raw: clean
 	    ./configure --prefix=/usr/local
 
 	make -C workdir/hello-$(HELLO_VERSION) \
-	    install DESTDIR=$(ROOT)
+	    install DESTDIR=$(PREFIX)
+	mv \
+		$(PREFIX)/usr/local/* \
+		$(PREFIX)/
+	rm -rf \
+		$(PREFIX)/usr
 
-	$(UTIL) raw
-
-install: raw
+install: build
 	$(UTIL) install
 
 clean:

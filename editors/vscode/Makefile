@@ -1,11 +1,12 @@
 NAME = vscode
 TREE_PATH = editors/
 
-ROOT = $(dir $(realpath $(lastword $(MAKEFILE_LIST))))/workdir/$(NAME)/
+PREFIX = $(dir $(realpath $(lastword $(MAKEFILE_LIST))))/workdir/$(NAME)/
 UTIL = $(MAKE) -C ../.. -f util.Makefile NAME=$(NAME) TREE_PATH=$(TREE_PATH)
 
-raw: clean
-	$(UTIL) extension-release
+build: clean
+	mkdir -p \
+    	$(PREFIX)
 
 	curl -L \
 		-o workdir/vscode.tar.gz \
@@ -16,29 +17,27 @@ raw: clean
 		-C workdir
 
 	mkdir -p \
-		$(ROOT)/usr/local/lib/
+		$(PREFIX)/lib/
 	mv \
 	    workdir/VSCode-linux-x64 \
-		$(ROOT)/usr/local/lib/vscode
+		$(PREFIX)/lib/vscode
 
 	mkdir -p \
-		$(ROOT)/usr/local/bin/
+		$(PREFIX)/bin/
 	ln -s \
 		/usr/local/lib/vscode/bin/code \
-		$(ROOT)/usr/local/bin/
+		$(PREFIX)/bin/
 	ln -s \
 		/usr/local/lib/vscode/bin/code-tunnel \
-		$(ROOT)/usr/local/bin/
+		$(PREFIX)/bin/
 
 	mkdir -p \
-		$(ROOT)/usr/local/share/applications/
+		$(PREFIX)/share/applications/
 	cp \
 		vscode.desktop \
-		$(ROOT)/usr/local/share/applications/
+		$(PREFIX)/share/applications/
 
-	$(UTIL) raw
-
-install: raw
+install: build
 	$(UTIL) install
 
 clean:
