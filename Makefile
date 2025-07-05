@@ -1,6 +1,7 @@
 PORTS = \
 	editors/vscode \
 	misc/hello \
+	sysutils/fastfetch \
 	sysutils/tmux
 
 PORTS_ = \
