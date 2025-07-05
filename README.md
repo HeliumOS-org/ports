@@ -51,7 +51,7 @@ Update port
 ```
 sudo git -C /usr/ports \
   pull
-sudo make -C /var/ports \
+sudo make -C /usr/ports \
   install clean refresh \
   PORTS=editors/vscode
 ```
