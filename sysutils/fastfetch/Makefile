@@ -1,11 +1,12 @@
 NAME = fastfetch
 TREE_PATH = sysutils/
 
-ROOT = workdir/$(NAME)/
+PREFIX = workdir/$(NAME)/
 UTIL = $(MAKE) -C ../.. -f util.Makefile NAME=$(NAME) TREE_PATH=$(TREE_PATH)
 
-raw: clean
-	$(UTIL) extension-release
+build: clean
+    mkdir -p \
+		$(PREFIX)
 
 	curl -L \
 		-o workdir/fastfetch.tar.gz \
@@ -16,14 +17,12 @@ raw: clean
 		-C workdir/
 
 	mkdir -p \
-		$(ROOT)/usr/local/
+		$(PREFIX)/
 	mv \
 		workdir/fastfetch-linux-amd64/usr/* \
-		$(ROOT)/usr/local/
+		$(PREFIX)/
 
-	$(UTIL) raw
-
-install: raw
+install: build
 	$(UTIL) install
 
 clean:

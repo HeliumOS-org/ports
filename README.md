@@ -1,10 +1,10 @@
 ## Ports for HeliumOS
 
-A ports system based on systemd-sysext
+A ports system based on OverlayFS.
 
 Ports in this ports tree will be binary if possible and built from source if necessary.
 
-**WARNING!** systemd-sysext may cause system instability. HeliumOS Ports is currently ***experimental***.
+***WARNING!*** HeliumOS Ports is currently ***experimental***.
 
 ## Usage
 
@@ -25,13 +25,13 @@ sudo make -C /usr/ports \
 Install port
 ```shell
 sudo make -C /usr/ports/misc/hello \
-  install clean refresh
+  install clean
 ```
 
 Install multiple ports
 ```
 sudo make -C /usr/ports \
-  install clean refresh \
+  install clean \
   PORTS='editors/vscode sysutils/tmux'
 ```
 
@@ -44,7 +44,7 @@ sudo make -C /usr/ports \
 Uninstall port
 ```shell
 sudo make -C /usr/ports/misc/hello \
-  uninstall refresh
+  uninstall
 ```
 
 Update port
@@ -52,6 +52,6 @@ Update port
 sudo git -C /usr/ports \
   pull
 sudo make -C /usr/ports \
-  install clean refresh \
+  install clean \
   PORTS=editors/vscode
 ```

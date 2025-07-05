@@ -1,11 +1,12 @@
 NAME = tmux
 TREE_PATH = sysutils/
 
-ROOT = workdir/$(NAME)/
+PREFIX = workdir/$(NAME)/
 UTIL = $(MAKE) -C ../.. -f util.Makefile NAME=$(NAME) TREE_PATH=$(TREE_PATH)
 
-raw: clean
-	$(UTIL) extension-release
+build: clean
+	mkdir -p \
+		$(PREFIX)
 
 	curl -L \
 		-o workdir/tmux.appimage \
@@ -17,23 +18,26 @@ raw: clean
 
 	cp -r \
 		workdir/squashfs-root/usr/* \
-		$(ROOT)/usr/
+		$(PREFIX)/
 
 	mkdir -p \
-		$(ROOT)/usr/libexec/
+		$(PREFIX)/libexec/
 	mv \
-		$(ROOT)/usr/bin/tmux \
-		$(ROOT)/usr/libexec/_tmux
+		$(PREFIX)/bin/tmux \
+		$(PREFIX)/libexec/_tmux
 	mv \
 		workdir/squashfs-root/AppRun \
-		$(ROOT)/usr/bin/tmux
+		$(PREFIX)/bin/tmux
 	sed -i \
-		's,/usr/bin/tmux,/../libexec/_tmux,g' \
-		$(ROOT)/usr/bin/tmux
+		's,usr/bin/tmux,../libexec/_tmux,g' \
+		$(PREFIX)/bin/tmux
 
-	$(UTIL) raw
+	rm \
+	    $(PREFIX)/bin/clear \
+		$(PREFIX)/bin/reset \
+		$(PREFIX)/bin/tabs
 
-install: raw
+install: build
 	$(UTIL) install
 
 clean:
