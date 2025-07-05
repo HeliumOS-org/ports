@@ -4,7 +4,9 @@ PORTS = \
 	editors/vscode \
 	misc/hello \
 	sysutils/fastfetch \
-	sysutils/tmux
+	sysutils/tmux \
+	www/node \
+	www/gohugo
 
 PORTS_ = \
     $(foreach port,$(PORTS),$(MAKE) -C $(port) "$@";)
