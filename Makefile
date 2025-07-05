@@ -1,4 +1,5 @@
 PORTS = \
+    devel/rustup-init \
 	editors/vscode \
 	misc/hello \
 	sysutils/fastfetch \
