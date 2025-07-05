@@ -11,44 +11,45 @@ Ports in this ports tree will be binary if possible and built from source if nec
 Download ports tree
 
 ```shell
-sudo git clone -b 10 https://github.com/HeliumOS-org/ports.git /var/ports
+sudo mkdir -p /var/usrports
+sudo git clone -b 10 https://github.com/HeliumOS-org/ports.git /usr/ports
 ```
 
 View available ports
 
 ```shell
-sudo make -C /var/ports \
+sudo make -C /usr/ports \
   available
 ```
 
 Install port
 ```shell
-sudo make -C /var/ports/misc/hello \
+sudo make -C /usr/ports/misc/hello \
   install clean refresh
 ```
 
 Install multiple ports
 ```
-sudo make -C /var/ports \
+sudo make -C /usr/ports \
   install clean refresh \
   PORTS='editors/vscode sysutils/tmux'
 ```
 
 View installed ports
 ```shell
-sudo make -C /var/ports \
+sudo make -C /usr/ports \
   status
 ```
 
 Uninstall port
 ```shell
-sudo make -C /var/ports/misc/hello \
+sudo make -C /usr/ports/misc/hello \
   uninstall refresh
 ```
 
 Update port
 ```
-sudo git -C /var/ports \
+sudo git -C /usr/ports \
   pull
 sudo make -C /var/ports \
   install clean refresh \
