@@ -1,11 +1,11 @@
 NAME = fastfetch
 TREE_PATH = sysutils/
 
-PREFIX = workdir/$(NAME)/
+PREFIX = $(dir $(realpath $(lastword $(MAKEFILE_LIST))))/workdir/$(NAME)/
 UTIL = $(MAKE) -C ../.. -f util.Makefile NAME=$(NAME) TREE_PATH=$(TREE_PATH)
 
 build: clean
-    mkdir -p \
+	mkdir -p \
 		$(PREFIX)
 
 	curl -L \
