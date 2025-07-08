@@ -2,7 +2,7 @@
 
 A ports system based on OverlayFS.
 
-Ports in this ports tree will be binary if possible and built from source if necessary.
+Ports in this ports tree will use upstream binaries if possible and build from source if necessary.
 
 ***WARNING!*** HeliumOS Ports is currently ***experimental***.
 
