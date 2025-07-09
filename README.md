@@ -1,6 +1,6 @@
 ## Addons for HeliumOS
 
-An system based on OverlayFS, inspired by FreeBSD Ports.
+An addons system based on OverlayFS, inspired by FreeBSD Ports.
 
 Addons in this repository will use upstream binaries if possible and build from source if necessary.
 
@@ -12,7 +12,7 @@ Download repository
 
 ```shell
 sudo mkdir -p /var/usraddons
-sudo git clone -b 10 https://github.com/HeliumOS-org/addons.git /usr/addons
+sudo git clone -b 10 https://github.com/HeliumOS-org/Addons.git /usr/addons
 ```
 
 View available addons
