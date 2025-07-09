@@ -25,7 +25,7 @@ refresh:
 	-sudo umount /usr/local
 	sudo mkdir -p \
 	    /usr/local \
-		/var/lib/addons
+	    /var/lib/addons
 	sudo mount -t overlay overlay \
 		-o lowerdir=$(shell find /var/lib/addons -mindepth 1 -maxdepth 1 -type d | tr '\n' ':')/usr/local \
         /usr/local
