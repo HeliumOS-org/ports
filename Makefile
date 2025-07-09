@@ -1,4 +1,4 @@
-PORTS = \
+ADDONS = \
 	devel/rustup-init \
 	devel/uv \
 	editors/neovim \
@@ -9,31 +9,31 @@ PORTS = \
 	www/node \
 	www/gohugo
 
-PORTS_ = \
-    $(foreach port,$(PORTS),$(MAKE) -C $(port) "$@";)
+ADDONS_ = \
+    $(foreach addon,$(ADDONS),$(MAKE) -C $(addon) "$@";)
 
 install:
-	$(PORTS_)
+	$(ADDONS_)
 
 clean:
-	$(PORTS_)
+	$(ADDONS_)
 
 uninstall:
-	$(PORTS_)
+	$(ADDONS_)
 
 refresh:
 	-sudo umount /usr/local
 	sudo mkdir -p \
 	    /usr/local \
-		/var/lib/ports
+		/var/lib/addons
 	sudo mount -t overlay overlay \
-		-o lowerdir=$(shell find /var/lib/ports -mindepth 1 -maxdepth 1 -type d | tr '\n' ':')/usr/local \
+		-o lowerdir=$(shell find /var/lib/addons -mindepth 1 -maxdepth 1 -type d | tr '\n' ':')/usr/local \
         /usr/local
 
 status:
-	@echo "Installed ports:"
-	@ls /var/lib/ports | tr ' ' '\n' | sed 's,__,/,g'
+	@echo "Installed addons:"
+	@ls /var/lib/addons | tr ' ' '\n' | sed 's,__,/,g'
 
 available:
-	@echo 'Available ports:'
-	@$(foreach port,$(PORTS),echo "    $(port)";)
+	@echo 'Available addons:'
+	@$(foreach addon,$(ADDONS),echo "    $(addon)";)

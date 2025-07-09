@@ -1,57 +1,57 @@
-## Ports for HeliumOS
+## Addons for HeliumOS
 
-A ports system based on OverlayFS.
+An system based on OverlayFS, inspired by FreeBSD Ports.
 
-Ports in this ports tree will use upstream binaries if possible and build from source if necessary.
+Addons in this repository will use upstream binaries if possible and build from source if necessary.
 
-***WARNING!*** HeliumOS Ports is currently ***experimental***.
+***WARNING!*** HeliumOS Addons is currently ***experimental***.
 
 ## Usage
 
-Download ports tree
+Download repository
 
 ```shell
-sudo mkdir -p /var/usrports
-sudo git clone -b 10 https://github.com/HeliumOS-org/ports.git /usr/ports
+sudo mkdir -p /var/usraddons
+sudo git clone -b 10 https://github.com/HeliumOS-org/addons.git /usr/addons
 ```
 
-View available ports
+View available addons
 
 ```shell
-sudo make -C /usr/ports \
+sudo make -C /usr/addons \
   available
 ```
 
-Install port
+Install addon
 ```shell
-sudo make -C /usr/ports/misc/hello \
+sudo make -C /usr/addons/misc/hello \
   install clean
 ```
 
-Install multiple ports
+Install multiple addons
 ```
-sudo make -C /usr/ports \
+sudo make -C /usr/addons \
   install clean \
-  PORTS='editors/vscode sysutils/tmux'
+  ADDONS='editors/vscode sysutils/tmux'
 ```
 
-View installed ports
+View installed addons
 ```shell
-sudo make -C /usr/ports \
+sudo make -C /usr/addons \
   status
 ```
 
-Uninstall port
+Uninstall addon
 ```shell
-sudo make -C /usr/ports/misc/hello \
+sudo make -C /usr/addons/misc/hello \
   uninstall
 ```
 
-Update port
+Update addon
 ```
-sudo git -C /usr/ports \
+sudo git -C /usr/addons \
   pull
-sudo make -C /usr/ports \
+sudo make -C /usr/addons \
   install clean \
-  PORTS=editors/vscode
+  ADDONS=editors/vscode
 ```
