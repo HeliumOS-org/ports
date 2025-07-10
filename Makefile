@@ -1,4 +1,5 @@
 ADDONS = \
+	devel/anyzig \
 	devel/rustup-init \
 	devel/uv \
 	editors/neovim \
