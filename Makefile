@@ -24,7 +24,7 @@ uninstall:
 	$(ADDONS_)
 
 refresh:
-	-sudo umount /usr/local
+	-sudo umount /usr/local -l
 	sudo mkdir -p \
 	    /usr/local \
 	    /var/lib/addons
