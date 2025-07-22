@@ -5,6 +5,9 @@ ADDONS = \
 	editors/neovim \
 	editors/vscode \
 	lang/lua51 \
+	lang/lua52 \
+	lang/lua53 \
+	lang/lua54 \
 	misc/hello \
 	sysutils/fastfetch \
 	sysutils/tmux \
