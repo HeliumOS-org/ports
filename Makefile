@@ -10,6 +10,7 @@ ADDONS = \
 	lang/lua54 \
 	misc/hello \
 	sysutils/fastfetch \
+	sysutils/restic \
 	sysutils/tmux \
 	www/node \
 	www/gohugo
