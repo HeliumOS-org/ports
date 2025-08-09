@@ -24,12 +24,12 @@ build: clean
 		$(PREFIX)/libexec/
 	mv \
 		$(PREFIX)/bin/tmux \
-		$(PREFIX)/libexec/_tmux
+		$(PREFIX)/bin/_tmux
 	mv \
 		workdir/squashfs-root/AppRun \
 		$(PREFIX)/bin/tmux
 	sed -i \
-		's,usr/bin/tmux,../libexec/_tmux,g' \
+		's,usr/bin/tmux,_tmux,g' \
 		$(PREFIX)/bin/tmux
 
 	rm \
