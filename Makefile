@@ -29,12 +29,18 @@ uninstall:
 
 refresh:
 	-sudo umount /usr/local -l
+	sudo rm -rf \
+	    /var/lib/addons/staging
 	sudo mkdir -p \
 	    /usr/local \
-	    /var/lib/addons
+	    /var/lib/addons/staging
+	$(foreach ADDON,$(shell find /var/lib/addons -mindepth 1 -maxdepth 1 -type d | tr '\n' ' '),\
+		sudo cp -R --reflink=always $(ADDON)/* /var/lib/addons/staging/ \
+	&)
 	sudo mount -t overlay overlay \
-		-o lowerdir=$(shell find /var/lib/addons -mindepth 1 -maxdepth 1 -type d | tr '\n' ':')/usr/local \
-        /usr/local
+		-o lowerdir=/var/lib/addons/staging:/usr/local \
+		/usr/local
+	@echo "Mounted addons successfully."
 
 status:
 	@echo "Installed addons:"
