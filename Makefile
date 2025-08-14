@@ -30,7 +30,7 @@ uninstall:
 refresh:
 	-sudo umount /usr/local -l
 	sudo rm -rf \
-	    /var/lib/addons/staging/*
+	    /var/lib/addons/staging
 	sudo mkdir -p \
 	    /usr/local \
 	    /var/lib/addons/staging
