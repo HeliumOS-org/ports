@@ -1,0 +1,21 @@
+pkgname=lua51
+pkgver=5.1.5
+pkgrel=1
+pkgdesc="Powerful lightweight programming language designed for extending applications"
+arch=(x86_64)
+url='https://www.lua.org/'
+license=('MIT')
+provides=('lua')
+conflicts=('lua')
+
+source=(https://www.lua.org/ftp/lua-$pkgver.tar.gz)
+md5sums=('2e115fe26e435e33b0d5c022e4490567')
+
+build(){
+    cd "lua-$pkgver"
+    make linux
+}
+package(){
+    cd "lua-$pkgver"
+    make INSTALL_TOP="$pkgdir/usr/local" install
+}

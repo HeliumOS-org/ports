@@ -1,0 +1,19 @@
+pkgname=hugo-bin
+pkgver=0.147.9
+pkgrel=1
+pkgdesc="Fast and Flexible Static Site Generator in Goe"
+arch=(x86_64)
+url="https://gohugo.io/"
+license=(Apache-2.0)
+
+source=(https://github.com/gohugoio/hugo/releases/download/v$pkgver/hugo_extended_withdeploy_${pkgver}_linux-amd64.tar.gz)
+md5sums=('1aa6fe4bf07d01991b6d1871be43d0c2')
+
+build(){
+    echo
+}
+
+package(){
+    mkdir -p ${pkgdir}/usr/local/bin
+    cp hugo ${pkgdir}/usr/local/bin/
+}

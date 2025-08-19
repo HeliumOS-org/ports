@@ -1,0 +1,22 @@
+pkgname=node-bin
+pkgver=24.3.0
+pkgrel=1
+pkgdesc="Node.js JavaScript runtime"
+arch=(x86_64)
+url="https://nodejs.org/"
+license=(MIT)
+
+source=(https://nodejs.org/dist/v$pkgver/node-v${pkgver}-linux-x64.tar.xz)
+md5sums=('3162c4642312f40bd5ac674e9f81b54e')
+
+build(){
+    echo
+}
+
+package(){
+    mkdir -p ${pkgdir}/usr/local
+    cp -r node-v${pkgver}-linux-x64/bin ${pkgdir}/usr/local/bin
+    cp -r node-v${pkgver}-linux-x64/include ${pkgdir}/usr/local/include/
+    cp -r node-v${pkgver}-linux-x64/lib ${pkgdir}/usr/local/lib/
+    cp -r node-v${pkgver}-linux-x64/share ${pkgdir}/usr/local/share/
+}

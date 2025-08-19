@@ -1,0 +1,19 @@
+pkgname=fastfetch-bin
+pkgver=2.47.0
+pkgrel=1
+pkgdesc="Like neofetch, but much faster because written in c"
+arch=(x86_64)
+url="https://github.com/fastfetch-cli/fastfetch"
+license=(MIT)
+
+source=(https://github.com/fastfetch-cli/fastfetch/releases/download/$pkgver/fastfetch-linux-amd64.tar.gz)
+md5sums=('945acde6634176b485ef9f4f09221ac3')
+
+build(){
+    echo
+}
+
+package(){
+    mkdir -p ${pkgdir}/usr/local/
+    cp -r fastfetch-linux-amd64/usr/* ${pkgdir}/usr/local/
+}

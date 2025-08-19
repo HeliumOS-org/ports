@@ -1,0 +1,21 @@
+pkgname=lua53
+pkgver=5.3.6
+pkgrel=1
+pkgdesc="Powerful lightweight programming language designed for extending applications"
+arch=(x86_64)
+url='https://www.lua.org/'
+license=('MIT')
+provides=('lua')
+conflicts=('lua')
+
+source=(https://www.lua.org/ftp/lua-$pkgver.tar.gz)
+md5sums=('83f23dbd5230140a3770d5f54076948d')
+
+build(){
+    cd "lua-$pkgver"
+    make linux
+}
+package(){
+    cd "lua-$pkgver"
+    make INSTALL_TOP="$pkgdir/usr/local" install
+}

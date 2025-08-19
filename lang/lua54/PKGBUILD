@@ -1,0 +1,21 @@
+pkgname=lua54
+pkgver=5.4.8
+pkgrel=1
+pkgdesc="Powerful lightweight programming language designed for extending applications"
+arch=(x86_64)
+url='https://www.lua.org/'
+license=('MIT')
+provides=('lua')
+conflicts=('lua')
+
+source=(https://www.lua.org/ftp/lua-$pkgver.tar.gz)
+md5sums=('81cf5265b8634967d8a7480d238168ce')
+
+build(){
+    cd "lua-$pkgver"
+    make linux
+}
+package(){
+    cd "lua-$pkgver"
+    make INSTALL_TOP="$pkgdir/usr/local" install
+}

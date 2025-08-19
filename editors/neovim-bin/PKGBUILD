@@ -1,0 +1,19 @@
+pkgname=neovim-bin
+pkgver=0.11.2
+pkgrel=1
+pkgdesc="Vim-fork focused on extensibility and usability"
+arch=(x86_64)
+url="https://github.com/fastfetch-cli/fastfetch"
+license=(MIT)
+
+source=(https://github.com/neovim/neovim/releases/download/v$pkgver/nvim-linux-x86_64.tar.gz)
+md5sums=('c800a7f591da60c4dc492a17381051af')
+
+build(){
+    echo
+}
+
+package(){
+    mkdir -p ${pkgdir}/usr/local/
+    cp -r nvim-linux-x86_64/* ${pkgdir}/usr/local/
+}

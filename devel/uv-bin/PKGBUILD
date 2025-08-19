@@ -1,0 +1,19 @@
+pkgname=uv-bin
+pkgver=0.7.19
+pkgrel=1
+pkgdesc="An extremely fast Python package and project manager"
+arch=(x86_64)
+url="https://docs.astral.sh/uv/"
+license=(MIT)
+
+source=(https://github.com/astral-sh/uv/releases/download/$pkgver/uv-x86_64-unknown-linux-gnu.tar.gz)
+md5sums=('e434691b2cb56d7deb5e4adb2c765cee')
+
+build(){
+    echo
+}
+
+package(){
+    mkdir -p ${pkgdir}/usr/local/bin
+    cp -r uv-x86_64-unknown-linux-gnu/* ${pkgdir}/usr/local/bin/
+}

@@ -1,0 +1,19 @@
+pkgname=anyzig-bin
+pkgver=2025_08_13
+pkgrel=1
+pkgdesc="A universal zig executable that lets you run any version of zig"
+arch=(x86_64)
+url="https://github.com/marler8997/anyzig"
+license=(MIT)
+
+source=(https://github.com/marler8997/anyzig/releases/download/v$pkgver/anyzig-x86_64-linux.tar.gz)
+md5sums=('42ec644076fce6093f3a20323bbd8f35')
+
+build(){
+    echo
+}
+
+package(){
+    mkdir -p ${pkgdir}/usr/local/bin
+    cp -r zig ${pkgdir}/usr/local/bin/
+}

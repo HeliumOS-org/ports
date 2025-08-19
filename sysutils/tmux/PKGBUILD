@@ -1,0 +1,34 @@
+pkgname=tmux
+_gitname=tmux
+pkgver=10580_3.5.r302.gb13005e8
+pkgrel=1
+pkgdesc="A terminal multiplexer"
+url="https://github.com/tmux/tmux/wiki"
+arch=('i686' 'x86_64' 'aarch64')
+license=('BSD-2-Clause' 'BSD-3-Clause' 'ISC')
+source=('git+https://github.com/tmux/tmux.git')
+md5sums=('SKIP')
+
+pkgver() {
+  cd ${_gitname}
+  printf "%s_%s" \
+    $(git rev-list --count HEAD) \
+    $(git describe --long) | sed -e 's:\([^-]*-g\):r\1:' -e 's:-:.:g'
+}
+
+prepare() {
+  cd ${_gitname}
+  ./autogen.sh
+}
+
+build() {
+  cd ${_gitname}
+  ./configure --prefix=/usr/local ${_addconfigureflags}
+  make
+}
+
+package() {
+  cd ${_gitname}
+  make DESTDIR="${pkgdir}" install
+  install -Dm755 example_tmux.conf "${pkgdir}/usr/local/share/tmux/example_tmux.conf"
+}

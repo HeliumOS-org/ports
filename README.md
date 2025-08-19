@@ -1,8 +1,8 @@
 ## Addons for HeliumOS
 
-An addons system based on OverlayFS, inspired by FreeBSD Ports.
+An addons system based on OverlayFS and Pacman, inspired by FreeBSD Ports.
 
-Addons in this repository will use upstream binaries if possible and build from source if necessary.
+Addons in this repository ending with `-bin` use upstream binaries. The rest are built from source.
 
 ***WARNING!*** HeliumOS Addons is currently ***experimental***.
 
@@ -18,40 +18,32 @@ sudo git clone -b 10 https://github.com/HeliumOS-org/Addons.git /usr/addons
 View available addons
 
 ```shell
-sudo make -C /usr/addons \
-  available
+find /usr/addons | grep PKGBUILD
 ```
 
 Install addon
 ```shell
-sudo make -C /usr/addons/misc/hello \
-  install clean
-```
-
-Install multiple addons
-```
-sudo make -C /usr/addons \
-  install clean \
-  ADDONS='editors/vscode sysutils/tmux'
+cd /usr/addons/misc/hello && makepkg -si
 ```
 
 View installed addons
 ```shell
-sudo make -C /usr/addons \
-  status
+pacman -Q
 ```
 
 Uninstall addon
 ```shell
-sudo make -C /usr/addons/misc/hello \
-  uninstall
+sudo pacman -R hello
 ```
 
 Update addon
 ```
-sudo git -C /usr/addons \
-  pull
-sudo make -C /usr/addons \
-  install clean \
-  ADDONS=editors/vscode
+sudo git -C /usr/addons pull
+
+cd /usr/addons/editors/vscode-bin && makepkg -si
+```
+
+Clean addon sources
+```
+sudo git -C /usr/addons reset --hard
 ```
